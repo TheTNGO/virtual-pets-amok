@@ -14,4 +14,16 @@ public class Litterbox {
 		
 	}
 
+	public void dirtyDamage(OrganicCat cat) {
+		if (this.statCleanliness == 0) {
+			cat.subtractStatHealth(1);
+			cat.subtractStatHappiness(1);
+		}
+	}
+
+	public void setStatCleanliness(int cleanliness) {
+		this.statCleanliness = cleanliness;
+				
+	}
+
 }
