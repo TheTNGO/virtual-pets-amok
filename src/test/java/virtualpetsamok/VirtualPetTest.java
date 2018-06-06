@@ -28,8 +28,8 @@ public class VirtualPetTest {
 	
 	@Test
 	public void shouldHaveHappiness() {
-		testPet.setHappiness(10);
-		int happiness = testPet.getHappiness();
+		testPet.setStatHappiness(10);
+		int happiness = testPet.getStatHappiness();
 		
 		assertEquals(10, happiness);
 	}

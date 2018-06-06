@@ -31,8 +31,8 @@ public class OrganicDogTest {
 	
 	@Test
 	public void shouldHaveHunger() {
-		testOrgDog1.setHunger(10);
-		int hunger = testOrgDog1.getHunger();
+		testOrgDog1.setStatHunger(10);
+		int hunger = testOrgDog1.getStatHunger();
 		
 		assertEquals(10, hunger);
 	}
@@ -40,29 +40,50 @@ public class OrganicDogTest {
 	@Test
 	public void shouldHaveThirst() {
 		
-		testOrgDog1.setThirst(10);
-		int hunger = testOrgDog1.getThirst();
+		testOrgDog1.setStatThirst(10);
+		int hunger = testOrgDog1.getStatThirst();
 		
 		assertEquals(10, hunger);
 		
 	}
 	
+	
 	@Test
 	public void shouldHaveHappiness() {
-		testOrgDog1.setHappiness(10);
-		int happiness = testOrgDog1.getHappiness();
+		testOrgDog1.setStatHappiness(10);
+		int happiness = testOrgDog1.getStatHappiness();
 		
 		assertEquals(10, happiness);
 	}
 	
 
 	@Test
-	public void walkiesMakeDogHappy() {
-		testOrgDog1.setHappiness(4);
-		testOrgDog1.beWalked();
-		int happiness = testOrgDog1.getHappiness();
+	public void walkingDogIncreasesStatHappiness() {
+		testOrgDog1.setStatHappiness(4);
+		testOrgDog1.inputWalk();
+		int happiness = testOrgDog1.getStatHappiness();
 		assertEquals(happiness, 5);
 		
 	}
+	
+	@Test
+	public void walkingDogIncreasesPoopThreshold() {
+		testOrgDog1.setStatPoopThresh(1);
+		testOrgDog1.inputWalk();
+		int poopThresh = testOrgDog1.getStatPoopThresh();
+		assertEquals(2, poopThresh);
+	}
+	
+	@Test
+	public void poopingShouldAffectDogsOwnCleanliness() {
+		testOrgDog1.setStatCleanliness(5);
+		testOrgDog1.poop();
+		int cleanliness = testOrgDog1.getStatCleanliness();
+		assertEquals(4, cleanliness);
+	}
+	
+	
+	
+	
 
 }

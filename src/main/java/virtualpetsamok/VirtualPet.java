@@ -23,11 +23,11 @@ public class VirtualPet {
 
 	/* Happiness Methods */
 	
-	public void setHappiness(int happiness) {
+	public void setStatHappiness(int happiness) {
 		this.statHappiness = happiness;
 	}
 
-	public int getHappiness() {
+	public int getStatHappiness() {
 		return this.statHappiness;
 	}
 	

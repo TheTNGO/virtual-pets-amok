@@ -20,6 +20,8 @@ public class OrganicCatTest {
 		testOrganicCat2 = new OrganicCat();
 		testLitter = new Litterbox();
 	}
+
+	/* Inheritance (VirtualPet) Tests */
 	
 	@Test
 	public void shouldHaveHealth() {
@@ -34,16 +36,20 @@ public class OrganicCatTest {
 	
 	@Test
 	public void shouldHaveHappiness() {
-		testOrganicCat1.setHappiness(10);
-		int happiness = testOrganicCat1.getHappiness();
+		testOrganicCat1.setStatHappiness(10);
+		int happiness = testOrganicCat1.getStatHappiness();
 		
 		assertEquals(10, happiness);
 	}
 	
+	
+	/* Inheritance (OrganicPet) Tests */
+
+	
 	@Test
 	public void shouldHaveHunger() {
-		testOrganicCat1.setHunger(10);
-		int hunger = testOrganicCat1.getHunger();
+		testOrganicCat1.setStatHunger(10);
+		int hunger = testOrganicCat1.getStatHunger();
 		
 		assertEquals(10, hunger);
 	}
@@ -51,12 +57,14 @@ public class OrganicCatTest {
 	@Test
 	public void shouldHaveThirst() {
 		
-		testOrganicCat1.setThirst(10);
-		int hunger = testOrganicCat1.getThirst();
+		testOrganicCat1.setStatThirst(10);
+		int hunger = testOrganicCat1.getStatThirst();
 		
 		assertEquals(10, hunger);
 		
 	}
+	
+	/* Organic Cat Exclusive */
 	
 	@Test
 	public void shouldPoopInLitterBox() {
@@ -64,7 +72,7 @@ public class OrganicCatTest {
 		testOrganicCat1.poop(testLitter);
 		int litterCleanlinessAfter = testLitter.getLitterboxCleanliness();
 		
-		assertEquals(litterCleanlinessBefore -1, litterCleanlinessAfter);
+		assertEquals((litterCleanlinessBefore - 1) , litterCleanlinessAfter);
 		
 	}
 	@Test

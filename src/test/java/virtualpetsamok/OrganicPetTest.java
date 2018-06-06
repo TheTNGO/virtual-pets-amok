@@ -5,10 +5,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-public class OrganicTest {
+public class OrganicPetTest {
 	
 	OrganicPet testOrganic;
-
+	
+	/* Inherited from VirtualPet */
+	
 	@Before
 	public void setUp() {
 		testOrganic = new OrganicPet();
@@ -27,16 +29,18 @@ public class OrganicTest {
 	
 	@Test
 	public void shouldHaveHappiness() {
-		testOrganic.setHappiness(10);
-		int happiness = testOrganic.getHappiness();
+		testOrganic.setStatHappiness(10);
+		int happiness = testOrganic.getStatHappiness();
 		
 		assertEquals(10, happiness);
 	}
 	
+	/* Organic Exclusive */ 
+	
 	@Test
 	public void shouldHaveHunger() {
-		testOrganic.setHunger(10);
-		int hunger = testOrganic.getHunger();
+		testOrganic.setStatHunger(10);
+		int hunger = testOrganic.getStatHunger();
 		
 		assertEquals(10, hunger);
 	}
@@ -44,8 +48,8 @@ public class OrganicTest {
 	@Test
 	public void shouldHaveThirst() {
 		
-		testOrganic.setThirst(10);
-		int hunger = testOrganic.getThirst();
+		testOrganic.setStatThirst(10);
+		int hunger = testOrganic.getStatThirst();
 		
 		assertEquals(10, hunger);
 		
