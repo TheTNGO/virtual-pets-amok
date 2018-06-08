@@ -62,7 +62,10 @@ public class VirtualPetsAmokApp {
 			System.out.println("8. Take a new pet into the shelter");
 			System.out.println("9. Remove a pet from the shelter");
 			System.out.println();
-			System.out.println("10. Quit");
+			
+			System.out.println("10. Clean all dog cages");
+			System.out.println("11. Clean the litterbox");
+			System.out.println("12. Quit");
 			String choice = input.nextLine();
 
 			/* Input Results */
@@ -73,7 +76,7 @@ public class VirtualPetsAmokApp {
 					&& !(choice.equalsIgnoreCase("4")) && !(choice.equalsIgnoreCase("5"))
 					&& !(choice.equalsIgnoreCase("6")) && !(choice.equalsIgnoreCase("7"))
 					&& !(choice.equalsIgnoreCase("8")) && !(choice.equalsIgnoreCase("9"))
-					&& !(choice.equalsIgnoreCase("10"))) {
+					&& !(choice.equalsIgnoreCase("10"))&& !(choice.equalsIgnoreCase("11"))&& !(choice.equalsIgnoreCase("12"))) {
 				System.out.println("\nThe pets seem to be confused.");
 				System.out.println("Please enter a valid option.");
 				choice = input.nextLine();
@@ -216,7 +219,7 @@ public class VirtualPetsAmokApp {
 							currentShelter.addPet(pet5);
 						}
 						System.out.println("\nLooks like " + newPetName + " is ready to make some new friends!\n");
-						
+
 						// RoboDog
 					} else if (typeChoice.equalsIgnoreCase("RoboDog")) {
 						System.out.println("What's its new name?");
@@ -241,7 +244,7 @@ public class VirtualPetsAmokApp {
 							currentShelter.addPet(pet5);
 						}
 						System.out.println("\nLooks like " + newPetName + " is ready to make some new friends!\n");
-						
+
 						// RoboCat
 					} else if (typeChoice.equalsIgnoreCase("RoboCat")) {
 						System.out.println("What's its new name?");
@@ -291,10 +294,19 @@ public class VirtualPetsAmokApp {
 
 				currentShelter.getShelterPetVariables().removeAll(toRemove);
 
+			} else if (choice.equalsIgnoreCase("10")) {
+				currentShelter.inputCleanAllDogs();
+				currentShelter.tick();
+				System.out.println("All of your organic dogs feel clean.");
+			} else if (choice.equalsIgnoreCase("11")) {
+				currentShelter.cleanLitterboxes();
+				currentShelter.tick();
+				System.out.println(
+						"Your cats have stopped fighting to mark their territory. Plus, the litterbox is now fresh.");
 			}
 
 			// Quit
-			else if (choice.equalsIgnoreCase("10")) {
+			else if (choice.equalsIgnoreCase("12")) {
 				System.out.println("\nTime to clock out! Nice treats from your relief await!");
 				input.close();
 				System.exit(0);
