@@ -25,7 +25,7 @@ public class OrganicPet extends VirtualPet {
 	}
 
 	private void subtractStatHunger(int amount) {
-		this.statHunger += amount;
+		this.statHunger -= amount;
 	}
 
 	public void setStatThirst(int thirst) {
@@ -42,13 +42,14 @@ public class OrganicPet extends VirtualPet {
 	}
 
 	private void subtractStatThirst(int amount) {
-		this.statThirst += amount;
+		this.statThirst -= amount;
 	}
 
 	/* Inputs */
 
 	public void inputFeed() {
 		this.addStatHunger(5);
+		this.addStatHappiness(5);
 	}
 
 	public void inputWater() {
@@ -61,9 +62,9 @@ public class OrganicPet extends VirtualPet {
 	}
 
 	public void inputSleep() {
+		super.inputSleep();
 		this.subtractStatHunger(5);
 		this.subtractStatThirst(5);
-		this.addStatHappiness(9);
 
 	}
 }

@@ -61,7 +61,8 @@ public class VirtualPet {
 	
 	// Sleep
 	public void inputSleep() {
-		this.addStatHappiness(9);
+		this.addStatHappiness(5);
+		this.addStatHealth(5);
 	}
 	
 	// Play

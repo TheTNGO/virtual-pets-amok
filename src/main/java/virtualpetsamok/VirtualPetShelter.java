@@ -70,7 +70,11 @@ public class VirtualPetShelter {
 
 	public void tick() {
 		for (VirtualPet elems : shelter) {
-			elems.tick();
+			if (elems instanceof OrganicCat) {
+				((OrganicCat) elems).tick(litterbox);
+			} else {
+				elems.tick();
+			}
 		}
 	}
 
@@ -81,13 +85,13 @@ public class VirtualPetShelter {
 	public void inputWalkAll() {
 		for (VirtualPet elems : shelter) {
 			if (elems instanceof RoboDog || elems instanceof OrganicDog) {
-				if(elems instanceof RoboDog) {
+				if (elems instanceof RoboDog) {
 					((RoboDog) elems).inputWalk();
 				} else {
 					((OrganicDog) elems).inputWalk();
 				}
 			}
-		}		
+		}
 	}
 
 	public void inputCleanAllDogs() {
@@ -95,14 +99,14 @@ public class VirtualPetShelter {
 			if (elems instanceof OrganicDog) {
 				((OrganicDog) elems).inputClean();
 			}
-		}		
+		}
 	}
 
 	public void cleanLitterboxes() {
-		for(VirtualPet elems : shelter) {
-			if(elems instanceof OrganicCat) {
+		for (VirtualPet elems : shelter) {
+			if (elems instanceof OrganicCat) {
 				litterbox.inputClean((OrganicCat) elems);
 			}
-		}		
+		}
 	}
 }

@@ -16,7 +16,7 @@ public class VirtualPetShelterTest {
 	VirtualPetShelter underTest;
 	VirtualPet testPet1;
 	VirtualPet testPet2;
-	
+
 	Litterbox testLitter;
 
 	OrganicDog orgDog1;
@@ -39,7 +39,7 @@ public class VirtualPetShelterTest {
 		orgCat1 = new OrganicCat(null, null);
 		orgCat2 = new OrganicCat(null, null);
 		roboCat1 = new RoboCat(null, null);
-		
+
 		testLitter = new Litterbox();
 
 	}
@@ -81,143 +81,64 @@ public class VirtualPetShelterTest {
 		assertThat(containedPets, containsInAnyOrder("Test1", "Test2"));
 	}
 
-	// @Test
-	// public void shouldBeAbleToFeedAllPets() {
-	// underTest.addPet(testPet1);
-	// underTest.addPet(testPet2);
-	// underTest.inputFeedAll();
+	@Test
+	public void shouldBeAbleToFeedAllOrganicPets() {
+		underTest.addPet(orgDog1);
+		underTest.addPet(orgCat1);
+		underTest.addPet(roboDog1);
+		underTest.inputFeedAll();
+
+		assertEquals(15, roboDog1.getStatHappiness());
+		assertEquals(20, orgDog1.getStatHappiness());
+		assertEquals(20, orgDog1.getStatHunger());
+
+	}
+
+	@Test
+	public void shouldBePutAllPetsToBed() {
+
+		underTest.addPet(orgDog1);
+		underTest.addPet(orgCat1);
+		underTest.addPet(roboDog1);
+		underTest.inputSleepAll();
+
+		assertEquals(20, orgDog1.getStatHappiness());
+		assertEquals(20, orgDog1.getStatHealth());
+		assertEquals(10, orgDog1.getStatHunger());
+		assertEquals(10, orgDog1.getStatThirst());
+
+		assertEquals(20, orgCat1.getStatHappiness());
+		assertEquals(20, orgCat1.getStatHealth());
+		assertEquals(10, orgCat1.getStatHunger());
+		assertEquals(10, orgCat1.getStatThirst());
+
+		assertEquals(20, roboDog1.getStatHappiness());
+		assertEquals(20, roboDog1.getStatHealth());
+
+	}
+
 	//
-	//
-	// // Intended order of stats: Nutrition, Energy, Mood
-	// // Refactor later by possibly making HashMap for VirtualPet Class
-	//
-	// Collection<Integer> stats1 = new ArrayList<>();
-	// Collection<Integer> stats2 = new ArrayList<>();
-	//
-	// stats1.add(testPet1.getStatNutrition());
-	// stats1.add(testPet1.getStatMood());
-	// stats1.add(testPet1.getStatEnergy());
-	// stats2.add(testPet2.getStatNutrition());
-	// stats2.add(testPet2.getStatMood());
-	// stats2.add(testPet2.getStatEnergy());
-	//
-	// //Based on Starting amount 10 on all pets:
-	//
-	// assertThat(stats1, contains(15, 15, 15));
-	// assertThat(stats2, contains(15, 15, 15));
-	//
-	// }
-	//
-	// @Test
-	// public void shouldBePutAllPetsToBed() {
-	// underTest.addPet(testPet1);
-	// underTest.addPet(testPet2);
-	// underTest.inputSleepAll();
-	//
-	//
-	// // Intended order of stats: Nutrition, Energy, Mood
-	// // Refactor later by possibly making HashMap for VirtualPet Class
-	//
-	// Collection<Integer> stats1 = new ArrayList<>();
-	// Collection<Integer> stats2 = new ArrayList<>();
-	//
-	// stats1.add(testPet1.getStatNutrition());
-	// stats1.add(testPet1.getStatMood());
-	// stats1.add(testPet1.getStatEnergy());
-	// stats2.add(testPet2.getStatNutrition());
-	// stats2.add(testPet2.getStatMood());
-	// stats2.add(testPet2.getStatEnergy());
-	//
-	// //Based on Starting amount 10 on all pets:
-	//
-	// assertThat(stats1, contains(6, 15, 15));
-	// assertThat(stats2, contains(6, 15, 15));
-	//
-	// }
-	//
-	// @Test
-	// public void shouldPlayWithOnlyTestPet1() {
-	// underTest.addPet(testPet1);
-	// underTest.addPet(testPet2);
-	//
-	// underTest.inputPlayWithOne(testPet1);
-	//
-	//
-	// // Intended order of stats: Nutrition, Energy, Mood
-	// // Refactor later by possibly making HashMap for VirtualPet Class
-	//
-	// Collection<Integer> stats1 = new ArrayList<>();
-	// Collection<Integer> stats2 = new ArrayList<>();
-	//
-	// stats1.add(testPet1.getStatNutrition());
-	// stats1.add(testPet1.getStatMood());
-	// stats1.add(testPet1.getStatEnergy());
-	// stats2.add(testPet2.getStatNutrition());
-	// stats2.add(testPet2.getStatMood());
-	// stats2.add(testPet2.getStatEnergy());
-	//
-	// //Based on Starting amount 10 on all pets:
-	//
-	// assertThat(stats1, contains(6, 15, 6));
-	// assertThat(stats2, contains(10, 10 ,10 ));
-	//
-	// }
-	//
-	// @Test
-	// public void shouldPlayWithOnlyTestPet2() {
-	// underTest.addPet(testPet1);
-	// underTest.addPet(testPet2);
-	//
-	// underTest.inputPlayWithOne(testPet2);
-	//
-	// // Intended order of stats: Nutrition, Energy, Mood
-	// // Refactor later by possibly making HashMap for VirtualPet Class
-	//
-	// Collection<Integer> stats1 = new ArrayList<>();
-	// Collection<Integer> stats2 = new ArrayList<>();
-	//
-	// stats1.add(testPet1.getStatNutrition());
-	// stats1.add(testPet1.getStatMood());
-	// stats1.add(testPet1.getStatEnergy());
-	// stats2.add(testPet2.getStatNutrition());
-	// stats2.add(testPet2.getStatMood());
-	// stats2.add(testPet2.getStatEnergy());
-	//
-	// //Based on Starting amount 10 on all pets:
-	//
-	// assertThat(stats1, contains(10, 10, 10));
-	// assertThat(stats2, contains(6, 15, 6));
-	//
-	// }
-	//
-	// @Test
-	// public void shelterTickDegradesAllPetsStats() {
-	//
-	// underTest.addPet(testPet1);
-	// underTest.addPet(testPet2);
-	//
-	// underTest.tick();
-	//
-	// // Intended order of stats: Nutrition, Energy, Mood
-	// // Refactor later by possibly making HashMap for VirtualPet Class
-	//
-	// Collection<Integer> stats1 = new ArrayList<>();
-	// Collection<Integer> stats2 = new ArrayList<>();
-	//
-	// stats1.add(testPet1.getStatNutrition());
-	// stats1.add(testPet1.getStatMood());
-	// stats1.add(testPet1.getStatEnergy());
-	// stats2.add(testPet2.getStatNutrition());
-	// stats2.add(testPet2.getStatMood());
-	// stats2.add(testPet2.getStatEnergy());
-	//
-	// //Based on Starting amount 10 on all pets:
-	//
-	// assertThat(stats1, contains(9, 7, 9));
-	// assertThat(stats2, contains(9, 7, 9));
-	//
-	//
-	// }
+	@Test
+	public void shelterTickDegradesAllPetsStats() {
+
+		underTest.addPet(orgDog1);
+		underTest.addPet(orgCat1);
+		underTest.addPet(roboDog1);
+		orgDog1.setStatHappiness(5);
+		orgCat1.setStatHappiness(5);
+		roboDog1.setStatHappiness(5);
+
+		underTest.tick();
+
+	
+		
+		assertEquals(4, orgDog1.getStatHappiness());
+		assertEquals(4, orgCat1.getStatHappiness());
+
+		assertEquals(4, roboDog1.getStatHappiness());
+
+
+	}
 
 	@Test
 	public void shouldOnlyFeedOrganics() {
@@ -260,49 +181,49 @@ public class VirtualPetShelterTest {
 
 	@Test
 	public void shouldBeAbleToCleanAllDogCagesAtOnce() {
-		
+
 		orgDog1.setStatCleanliness(5);
 		orgDog2.setStatCleanliness(5);
-		
+
 		underTest.addPet(orgDog1);
 		underTest.addPet(orgDog2);
-		
+
 		underTest.inputCleanAllDogs();
-		
+
 		assertEquals(15, orgDog1.getStatCleanliness());
 		assertEquals(15, orgDog2.getStatCleanliness());
 
 	}
-	
+
 	@Test
 	public void shouldBeAbleToCleanLitterbox() {
 		testLitter.setStatCleanliness(5);
 		testLitter.inputClean(orgCat1);
 		assertEquals(15, testLitter.getStatCleanliness());
 	}
-	
+
 	@Test
 	public void shouldIncreaseAllCatsHappiness() {
-		
+
 		List<VirtualPet> cats = new ArrayList();
 		underTest.addPet(orgCat1);
 		underTest.addPet(orgCat2);
 		underTest.cleanLitterboxes();
 		assertEquals(20, orgCat1.getStatHappiness());
 		assertEquals(20, orgCat2.getStatHappiness());
-		
+
 	}
-	
+
 	@Test
 	public void shouldIncreaseAllCatHealth() {
-		
+
 		List<VirtualPet> cats = new ArrayList();
 		underTest.addPet(orgCat1);
 		underTest.addPet(orgCat2);
 		underTest.cleanLitterboxes();
 		assertEquals(20, orgCat1.getStatHealth());
 		assertEquals(20, orgCat2.getStatHealth());
-		
+
 	}
 
 }
