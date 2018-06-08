@@ -15,7 +15,8 @@ public class OrganicDog extends OrganicPet implements Poop {
 	public void inputWalk() {
 		this.setStatHappiness(this.getStatHappiness() + 5);
 		this.setStatPoopThresh(this.getStatPoopThresh() + 2);
-		this.addStatHealth(5);;
+		this.addStatHealth(5);
+		;
 	}
 
 	// Poop Threshold
@@ -60,6 +61,14 @@ public class OrganicDog extends OrganicPet implements Poop {
 
 	public void inputClean() {
 		this.statCleanliness = DEFAULT_STAT_CLEANLINESS;
+	}
+
+	@Override
+	public String toString() {
+		String readout = "Name: " + this.getName( )+ "\t\tClass: " + this.getClass().getSimpleName() + "\t\tHealth: " + this.getStatHealth() + "\tHappiness: " + this.getStatHappiness()
+		+ "\tHunger/Thirst: " + this.getStatHunger() + "/" + this.getStatThirst() + "\tCage Cleanliness: " + this.statCleanliness + "\tPoop Threshhold: "
+		+ this.getStatPoopThresh();
+		return readout;
 	}
 
 }

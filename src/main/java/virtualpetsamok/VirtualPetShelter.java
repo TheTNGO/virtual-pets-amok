@@ -42,6 +42,14 @@ public class VirtualPetShelter {
 			}
 		}
 	}
+	
+	public void inputWaterAll() {
+		for (VirtualPet elems : shelter) {
+			if (elems instanceof OrganicPet) {
+				((OrganicPet) elems).inputWater();
+			}
+		}
+	}
 
 	public void inputOilAll() {
 		for (VirtualPet elems : shelter) {
@@ -108,5 +116,9 @@ public class VirtualPetShelter {
 				litterbox.inputClean((OrganicCat) elems);
 			}
 		}
+	}
+	
+	public int getLitterboxCleanliness() {
+		return litterbox.getStatCleanliness();
 	}
 }

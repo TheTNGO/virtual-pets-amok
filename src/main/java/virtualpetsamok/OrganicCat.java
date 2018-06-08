@@ -17,4 +17,11 @@ public class OrganicCat extends OrganicPet implements Poop {
 		litterbox.receivePoop();
 	}
 
+	@Override
+	public String toString() {
+		String readout = "Name: " + this.getName() + "\t\tClass: " + this.getClass().getSimpleName() + "\t\tHealth: " + this.getStatHealth() + "\tHappiness: " + this.getStatHappiness()
+		+ "\tHunger/Thirst: " + this.getStatHunger() + "/" + this.getStatThirst();
+		return readout;
+	}
+
 }

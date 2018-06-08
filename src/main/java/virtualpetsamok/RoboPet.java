@@ -26,6 +26,11 @@ public class RoboPet extends VirtualPet {
 	@Override
 	public void tick() {
 		super.tick();
+		
+		if(this.statOil > 0) {
+			this.statOil -= 1;
+
+		}
 
 		if (this.statOil <= 0) {
 			this.subtractStatHealth(1);
@@ -33,5 +38,6 @@ public class RoboPet extends VirtualPet {
 
 		}
 	}
+	
 
 }

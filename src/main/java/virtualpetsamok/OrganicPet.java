@@ -54,6 +54,7 @@ public class OrganicPet extends VirtualPet {
 
 	public void inputWater() {
 		this.addStatThirst(5);
+		this.addStatHappiness(5);
 	}
 
 	public void inputPlay() {
@@ -66,5 +67,12 @@ public class OrganicPet extends VirtualPet {
 		this.subtractStatHunger(5);
 		this.subtractStatThirst(5);
 
+	}
+	
+	@Override
+	public void tick() {
+		super.tick();
+		this.statHunger -= 1;
+		this.statThirst -= 1;
 	}
 }

@@ -130,13 +130,10 @@ public class VirtualPetShelterTest {
 
 		underTest.tick();
 
-	
-		
 		assertEquals(4, orgDog1.getStatHappiness());
 		assertEquals(4, orgCat1.getStatHappiness());
 
 		assertEquals(4, roboDog1.getStatHappiness());
-
 
 	}
 
