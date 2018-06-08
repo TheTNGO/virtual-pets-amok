@@ -8,6 +8,7 @@ public class RoboDog extends RoboPet {
 
 	public void inputWalk() {
 		this.setStatHappiness(this.getStatHappiness() + 5);
+		this.addStatHealth(5);
 	}
 	
 	@Override

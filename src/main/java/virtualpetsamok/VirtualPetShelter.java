@@ -7,6 +7,7 @@ import java.util.List;
 public class VirtualPetShelter {
 
 	List<VirtualPet> shelter = new ArrayList<>();
+	Litterbox litterbox = new Litterbox();
 
 	public void addPet(VirtualPet pet) {
 
@@ -85,6 +86,22 @@ public class VirtualPetShelter {
 				} else {
 					((OrganicDog) elems).inputWalk();
 				}
+			}
+		}		
+	}
+
+	public void inputCleanAllDogs() {
+		for (VirtualPet elems : shelter) {
+			if (elems instanceof OrganicDog) {
+				((OrganicDog) elems).inputClean();
+			}
+		}		
+	}
+
+	public void cleanLitterboxes() {
+		for(VirtualPet elems : shelter) {
+			if(elems instanceof OrganicCat) {
+				litterbox.inputClean((OrganicCat) elems);
 			}
 		}		
 	}

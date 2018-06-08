@@ -4,7 +4,9 @@ import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,10 +16,15 @@ public class VirtualPetShelterTest {
 	VirtualPetShelter underTest;
 	VirtualPet testPet1;
 	VirtualPet testPet2;
+	
+	Litterbox testLitter;
 
 	OrganicDog orgDog1;
+	OrganicDog orgDog2;
 	RoboDog roboDog1;
 	OrganicCat orgCat1;
+	OrganicCat orgCat2;
+
 	RoboCat roboCat1;
 
 	@Before
@@ -27,9 +34,13 @@ public class VirtualPetShelterTest {
 		testPet2 = new VirtualPet("Test2", "Test pet");
 
 		orgDog1 = new OrganicDog(null, null);
+		orgDog2 = new OrganicDog(null, null);
 		roboDog1 = new RoboDog(null, null);
 		orgCat1 = new OrganicCat(null, null);
+		orgCat2 = new OrganicCat(null, null);
 		roboCat1 = new RoboCat(null, null);
+		
+		testLitter = new Litterbox();
 
 	}
 
@@ -235,6 +246,7 @@ public class VirtualPetShelterTest {
 		underTest.addPet(orgCat1);
 
 		underTest.inputWalkAll();
+
 		assertEquals(20, orgDog1.getStatHappiness());
 		assertEquals(7, orgDog1.getStatPoopThresh());
 
@@ -244,6 +256,53 @@ public class VirtualPetShelterTest {
 
 		assertEquals(15, roboCat1.getStatHappiness());
 
+	}
+
+	@Test
+	public void shouldBeAbleToCleanAllDogCagesAtOnce() {
+		
+		orgDog1.setStatCleanliness(5);
+		orgDog2.setStatCleanliness(5);
+		
+		underTest.addPet(orgDog1);
+		underTest.addPet(orgDog2);
+		
+		underTest.inputCleanAllDogs();
+		
+		assertEquals(15, orgDog1.getStatCleanliness());
+		assertEquals(15, orgDog2.getStatCleanliness());
+
+	}
+	
+	@Test
+	public void shouldBeAbleToCleanLitterbox() {
+		testLitter.setStatCleanliness(5);
+		testLitter.inputClean(orgCat1);
+		assertEquals(15, testLitter.getStatCleanliness());
+	}
+	
+	@Test
+	public void shouldIncreaseAllCatsHappiness() {
+		
+		List<VirtualPet> cats = new ArrayList();
+		underTest.addPet(orgCat1);
+		underTest.addPet(orgCat2);
+		underTest.cleanLitterboxes();
+		assertEquals(20, orgCat1.getStatHappiness());
+		assertEquals(20, orgCat2.getStatHappiness());
+		
+	}
+	
+	@Test
+	public void shouldIncreaseAllCatHealth() {
+		
+		List<VirtualPet> cats = new ArrayList();
+		underTest.addPet(orgCat1);
+		underTest.addPet(orgCat2);
+		underTest.cleanLitterboxes();
+		assertEquals(20, orgCat1.getStatHealth());
+		assertEquals(20, orgCat2.getStatHealth());
+		
 	}
 
 }

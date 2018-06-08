@@ -26,4 +26,10 @@ public class Litterbox {
 
 	}
 
+	public void inputClean(OrganicCat cat) {
+		this.statCleanliness = DEFAULT_STAT_CLEANLINESS;
+		cat.addStatHappiness(5);
+		cat.addStatHealth(5);
+	}
+
 }

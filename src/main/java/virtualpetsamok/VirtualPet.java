@@ -36,7 +36,7 @@ public class VirtualPet {
 	}
 	
 	public void addStatHealth(int health) {
-		this.statHealth -= health;
+		this.statHealth += health;
 	}
 
 	/* Happiness Methods */
@@ -54,7 +54,7 @@ public class VirtualPet {
 	}
 	
 	public void addStatHappiness(int happiness) {
-		this.statHappiness -= happiness;
+		this.statHappiness += happiness;
 	}
 	
 	/* Inputs */
@@ -81,10 +81,16 @@ public class VirtualPet {
 		}
 
 		// Subtract Health if Happiness == 0
-		if (this.statHappiness == 0) {
+		if (this.statHappiness <= 0) {
 			if (this.statHealth > 0) {
 				this.statHealth -= 1;
 			}
+		}
+		
+		// Prevent Health from going lower than 0
+		
+		if (this.statHealth <= 0) {
+			this.statHealth = 0;
 		}
 	}
 
