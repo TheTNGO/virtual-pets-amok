@@ -8,16 +8,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class RoboDogTest {
-	
+
 	RoboDog testRoboDog;
-	
+
 	@Before
 	public void setUp() {
 		testRoboDog = new RoboDog();
-		
-		
+
 	}
-	
+
 	@Test
 	public void shouldHaveOilLevel() {
 		int oil = testRoboDog.getStatOil();
@@ -41,7 +40,7 @@ public class RoboDogTest {
 		int happinessAfter = testRoboDog.getStatHealth();
 		assertThat(happinessAfter, is(happinessBefore - 2));
 	}
-	
+
 	@Test
 	public void inputWalkShouldIncreaseHappiness() {
 		int happinessBefore = testRoboDog.getStatHappiness();
