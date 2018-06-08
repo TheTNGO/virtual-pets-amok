@@ -1,7 +1,7 @@
 package virtualpetsamok;
 
 public class Litterbox {
-	
+
 	private static final int DEFAULT_STAT_CLEANLINESS = 15;
 	private int statCleanliness = DEFAULT_STAT_CLEANLINESS;
 
@@ -11,7 +11,7 @@ public class Litterbox {
 
 	public void receivePoop() {
 		this.statCleanliness -= 1;
-		
+
 	}
 
 	public void dirtyDamage(OrganicCat cat) {
@@ -23,7 +23,7 @@ public class Litterbox {
 
 	public void setStatCleanliness(int cleanliness) {
 		this.statCleanliness = cleanliness;
-				
+
 	}
 
 }

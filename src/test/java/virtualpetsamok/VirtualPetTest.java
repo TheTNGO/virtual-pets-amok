@@ -1,7 +1,6 @@
 package virtualpetsamok;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -70,7 +69,5 @@ public class VirtualPetTest {
 		int health = testPet.getStatHealth();
 		assertEquals(4, health);
 	}
-	
-
 
 }

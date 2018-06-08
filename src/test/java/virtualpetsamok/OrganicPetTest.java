@@ -8,16 +8,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class OrganicPetTest {
-	
+
 	OrganicPet testOrganic;
-	
+
 	/* Inherited from VirtualPet */
-	
+
 	@Before
 	public void setUp() {
 		testOrganic = new OrganicPet();
 	}
-	
+
 	@Test
 	public void shouldHaveHealth() {
 		// act
@@ -28,35 +28,35 @@ public class OrganicPetTest {
 		assertEquals(10, health);
 
 	}
-	
+
 	@Test
 	public void shouldHaveHappiness() {
 		testOrganic.setStatHappiness(10);
 		int happiness = testOrganic.getStatHappiness();
-		
+
 		assertEquals(10, happiness);
 	}
-	
-	/* Organic Exclusive */ 
-	
+
+	/* Organic Exclusive */
+
 	@Test
 	public void shouldHaveHunger() {
 		testOrganic.setStatHunger(10);
 		int hunger = testOrganic.getStatHunger();
-		
+
 		assertEquals(10, hunger);
 	}
-	
+
 	@Test
 	public void shouldHaveThirst() {
-		
+
 		testOrganic.setStatThirst(10);
 		int hunger = testOrganic.getStatThirst();
-		
+
 		assertEquals(10, hunger);
-		
+
 	}
-	
+
 	@Test
 	public void tickShouldRemove1Happiness() {
 		testOrganic.setStatHappiness(5);
@@ -64,7 +64,7 @@ public class OrganicPetTest {
 		int happiness = testOrganic.getStatHappiness();
 		assertEquals(4, happiness);
 	}
-	
+
 	@Test
 	public void tickShouldRemoveHealthIfHungerIs0() {
 		testOrganic.setStatHunger(0);
@@ -73,12 +73,7 @@ public class OrganicPetTest {
 		testOrganic.tick();
 		int healthAfter = testOrganic.getStatHealth();
 		assertThat(healthAfter, is(healthBefore - 1));
-		
+
 	}
-	
 
-	
-
-	
-	
 }
