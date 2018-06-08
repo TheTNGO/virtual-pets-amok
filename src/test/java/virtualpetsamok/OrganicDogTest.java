@@ -109,11 +109,10 @@ public class OrganicDogTest {
 		
 	@Test
 	public void shouldLoseHealthIfCageIsNotClean() {
-		testOrgDog1.setStatCleanliness(1);
+		testOrgDog1.setStatCleanliness(0);
 		testOrgDog1.tick();
-		testOrgDog1.poop();
 		int health = testOrgDog1.getStatHealth();
-		assertEquals(0, health);
+		assertEquals(14, health);
 	}
 	
 	@Test
@@ -131,18 +130,18 @@ public class OrganicDogTest {
 		testOrgDog1.setStatPoopThresh(1);
 		testOrgDog1.tick();
 		int poopThreshAfter = testOrgDog1.getStatPoopThresh();
-		assertThat(poopThreshAfter, is(3));
+		assertThat(poopThreshAfter, is(5));
 	}
 	
 	@Test
 	public void shouldLoseHappinessIfCageIsNotClean() {
-		testOrgDog1.setStatHappiness(3);
 		testOrgDog1.setStatCleanliness(0);
-
 		testOrgDog1.tick();
 		int happiness = testOrgDog1.getStatHappiness();
-		assertEquals(1, happiness);
+		assertEquals(13, happiness);
 	}
+	
+
 	
 	
 	

@@ -1,5 +1,8 @@
 package virtualpetsamok;
 
+import org.junit.Before;
+import org.junit.Test;
+
 public class RoboPetTest {
 	
 	RoboPet testRobo = new RoboPet();

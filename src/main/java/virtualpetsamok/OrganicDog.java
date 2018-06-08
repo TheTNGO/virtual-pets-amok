@@ -2,8 +2,12 @@ package virtualpetsamok;
 
 public class OrganicDog extends OrganicPet implements Poop{
 	
-	private int statPoopThresh;
-	private int statClealiness;
+	private static final int DEFAULT_STAT_POOPTHRESH = 5;
+	private static final int DEFAULT_STAT_CLEANLINESS = 15;
+
+	
+	private int statPoopThresh = DEFAULT_STAT_POOPTHRESH;
+	private int statCleanliness = DEFAULT_STAT_CLEANLINESS;
 
 	public void inputWalk() {
 		this.setStatHappiness(this.getStatHappiness() + 5);
@@ -24,21 +28,22 @@ public class OrganicDog extends OrganicPet implements Poop{
 	
 	// Cage Cleanliness
 	public void setStatCleanliness(int amount) {
-		this.statClealiness = amount;
+		this.statCleanliness = amount;
 		
 	}
 
 	public int getStatCleanliness() {
-		return this.statClealiness;
+		return this.statCleanliness;
 	}
 	
 	public void poop() {
-		this.statClealiness -= 1;
+		this.statCleanliness -= 1;
 	}
 	
 	@Override
 	public void tick() {
 		super.tick();
+		
 		
 		if(this.getStatCleanliness() <= 0) {
 			this.subtractStatHealth(1);
@@ -48,7 +53,7 @@ public class OrganicDog extends OrganicPet implements Poop{
 		this.statPoopThresh -= 1;
 		if(this.getStatPoopThresh() <=0) {
 			this.poop();
-			this.setStatPoopThresh(3);
+			this.setStatPoopThresh(DEFAULT_STAT_POOPTHRESH);
 		}
 	}
 	

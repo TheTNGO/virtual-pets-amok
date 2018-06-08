@@ -1,6 +1,8 @@
 package virtualpetsamok;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -62,6 +64,19 @@ public class OrganicPetTest {
 		int happiness = testOrganic.getStatHappiness();
 		assertEquals(4, happiness);
 	}
+	
+	@Test
+	public void tickShouldRemoveHealthIfHungerIs0() {
+		testOrganic.setStatHunger(0);
+		testOrganic.setStatHealth(5);
+		int healthBefore = testOrganic.getStatHealth();
+		testOrganic.tick();
+		int healthAfter = testOrganic.getStatHealth();
+		assertThat(healthAfter, is(healthBefore - 1));
+		
+	}
+	
+
 	
 
 	

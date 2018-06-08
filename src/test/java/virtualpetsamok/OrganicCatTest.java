@@ -1,6 +1,8 @@
 package virtualpetsamok;
 
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -66,9 +68,9 @@ public class OrganicCatTest {
 
 	@Test
 	public void shouldPoopInLitterBox() {
-		int litterCleanlinessBefore = testLitter.getLitterboxCleanliness();
+		int litterCleanlinessBefore = testLitter.getStatCleanliness();
 		testOrganicCat1.poop(testLitter);
-		int litterCleanlinessAfter = testLitter.getLitterboxCleanliness();
+		int litterCleanlinessAfter = testLitter.getStatCleanliness();
 
 		assertEquals((litterCleanlinessBefore - 1), litterCleanlinessAfter);
 
@@ -96,8 +98,18 @@ public class OrganicCatTest {
 	public void shouldPoopOnTick() {
 		testLitter.setStatCleanliness(5);
 		testOrganicCat1.tick(testLitter);
-		int litter = testLitter.getLitterboxCleanliness();
+		int litter = testLitter.getStatCleanliness();
 		assertEquals(4, litter);
+	}
+
+	@Test
+	public void shouldLoseHappinessIfLitterboxIsNotClean() {
+		testOrganicCat1.setStatHappiness(3);
+		testLitter.setStatCleanliness(0);
+		int happinessBefore = testOrganicCat1.getStatHappiness();
+		testOrganicCat1.tick(testLitter);
+		int happinessAfter = testOrganicCat1.getStatHappiness();
+		assertThat(happinessAfter, is(happinessBefore - 2));
 	}
 
 }

@@ -5,7 +5,7 @@ public class Litterbox {
 	private static final int DEFAULT_STAT_CLEANLINESS = 15;
 	private int statCleanliness = DEFAULT_STAT_CLEANLINESS;
 
-	public int getLitterboxCleanliness() {
+	public int getStatCleanliness() {
 		return this.statCleanliness;
 	}
 
@@ -15,7 +15,7 @@ public class Litterbox {
 	}
 
 	public void dirtyDamage(OrganicCat cat) {
-		if (this.statCleanliness == 0) {
+		if (this.statCleanliness <= 0) {
 			cat.subtractStatHealth(1);
 			cat.subtractStatHappiness(1);
 		}
