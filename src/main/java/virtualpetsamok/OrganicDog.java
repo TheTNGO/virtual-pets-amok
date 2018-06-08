@@ -40,6 +40,7 @@ public class OrganicDog extends OrganicPet implements Poop {
 	}
 
 	public void poop() {
+		super.poop();
 		this.statCleanliness -= 1;
 	}
 

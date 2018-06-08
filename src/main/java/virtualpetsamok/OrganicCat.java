@@ -14,6 +14,7 @@ public class OrganicCat extends OrganicPet implements Poop {
 
 	@Override
 	public void poop(Litterbox litterbox) {
+		super.poop();
 		litterbox.receivePoop();
 	}
 

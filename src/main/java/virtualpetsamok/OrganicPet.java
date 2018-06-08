@@ -1,6 +1,6 @@
 package virtualpetsamok;
 
-public class OrganicPet extends VirtualPet {
+public class OrganicPet extends VirtualPet implements Poop {
 
 	public OrganicPet(String name, String description) {
 		super(name, description);
@@ -74,5 +74,11 @@ public class OrganicPet extends VirtualPet {
 		super.tick();
 		this.statHunger -= 1;
 		this.statThirst -= 1;
+	}
+	
+	
+	@Override
+	public void poop() {
+		System.out.println("\n" + this.getName() + " pooped.");
 	}
 }
