@@ -11,7 +11,7 @@ public class VirtualPetTest {
 
 	@Before
 	public void setUp() {
-		testPet = new VirtualPet();
+		testPet = new VirtualPet(null, null);
 	}
 
 	/* Health Tests */

@@ -2,6 +2,10 @@ package virtualpetsamok;
 
 public class OrganicDog extends OrganicPet implements Poop{
 	
+	public OrganicDog(String name, String description) {
+		super(name, description);
+	}
+
 	private static final int DEFAULT_STAT_POOPTHRESH = 5;
 	private static final int DEFAULT_STAT_CLEANLINESS = 15;
 

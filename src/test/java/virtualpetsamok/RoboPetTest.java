@@ -9,11 +9,11 @@ import org.junit.Test;
 
 public class RoboPetTest {
 
-	RoboPet testRobo = new RoboPet();
+	RoboPet testRobo;
 
 	@Before
 	public void setUp() {
-		testRobo = new RoboPet();
+		testRobo = new RoboPet(null, null);
 	}
 
 	@Test

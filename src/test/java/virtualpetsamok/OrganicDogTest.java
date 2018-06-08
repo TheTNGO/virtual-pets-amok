@@ -15,8 +15,8 @@ public class OrganicDogTest {
 
 	@Before
 	public void setUp() {
-		testOrgDog1 = new OrganicDog();
-		testOrgDog2 = new OrganicDog();
+		testOrgDog1 = new OrganicDog(null, null);
+		testOrgDog2 = new OrganicDog(null, null);
 
 	}
 

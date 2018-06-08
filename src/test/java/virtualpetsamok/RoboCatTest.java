@@ -13,7 +13,7 @@ public class RoboCatTest {
 	
 	@Before
 	public void setUp() {
-		testRoboCat = new RoboCat();
+		testRoboCat = new RoboCat(null, null);
 	}
 	
 	@Test

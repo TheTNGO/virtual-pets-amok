@@ -15,7 +15,7 @@ public class OrganicPetTest {
 
 	@Before
 	public void setUp() {
-		testOrganic = new OrganicPet();
+		testOrganic = new OrganicPet(null, null);
 	}
 
 	@Test

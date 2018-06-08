@@ -15,8 +15,8 @@ public class OrganicCatTest {
 
 	@Before
 	public void setUp() {
-		testOrganicCat1 = new OrganicCat();
-		testOrganicCat2 = new OrganicCat();
+		testOrganicCat1 = new OrganicCat(null, null);
+		testOrganicCat2 = new OrganicCat(null, null);
 		testLitter = new Litterbox();
 	}
 

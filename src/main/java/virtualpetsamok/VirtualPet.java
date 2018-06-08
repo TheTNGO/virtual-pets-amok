@@ -5,8 +5,20 @@ public class VirtualPet {
 	private static final int DEFAULT_STAT_HEALTH = 15;
 	private static final int DEFAULT_STAT_HAPPINESS = 15;
 
+	private String name;
+	private String description;
 	private int statHealth = DEFAULT_STAT_HEALTH;
 	private int statHappiness = DEFAULT_STAT_HAPPINESS;
+	
+	
+	
+	/* Constructor */
+	
+	public VirtualPet(String name, String description) {
+		this.name = name;
+		this.description = description;
+		
+	}
 
 	/* Health Methods */
 
@@ -22,6 +34,10 @@ public class VirtualPet {
 		this.statHealth = health;
 
 	}
+	
+	public void addStatHealth(int health) {
+		this.statHealth -= health;
+	}
 
 	/* Happiness Methods */
 
@@ -36,6 +52,24 @@ public class VirtualPet {
 	public void subtractStatHappiness(int happiness) {
 		this.statHappiness -= happiness;
 	}
+	
+	public void addStatHappiness(int happiness) {
+		this.statHappiness -= happiness;
+	}
+	
+	/* Inputs */
+	
+	// Sleep
+	public void inputSleep() {
+		this.addStatHappiness(9);
+	}
+	
+	// Play
+	public void inputPlay() {
+		
+		this.addStatHappiness(9);
+	}
+	
 
 	/* Tick Methods for ALL Pets */
 
@@ -52,6 +86,10 @@ public class VirtualPet {
 				this.statHealth -= 1;
 			}
 		}
+	}
+
+	public String getName() {
+		return this.name;
 	}
 
 }

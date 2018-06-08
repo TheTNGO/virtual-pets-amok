@@ -2,6 +2,10 @@ package virtualpetsamok;
 
 public class RoboPet extends VirtualPet {
 
+	public RoboPet(String name, String description) {
+		super(name, description);
+	}
+
 	private static final int DEFAULT_STAT_OIL = 15;
 
 	private int statOil = DEFAULT_STAT_OIL;
