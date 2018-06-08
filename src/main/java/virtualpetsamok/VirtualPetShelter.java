@@ -2,13 +2,7 @@ package virtualpetsamok;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import virtualpetshelter.VirtualPet;
 
 public class VirtualPetShelter {
 
@@ -27,7 +21,7 @@ public class VirtualPetShelter {
 				toRemove.add(elements);
 			}
 		}
-		
+
 		shelter.removeAll(toRemove);
 	}
 
@@ -42,7 +36,17 @@ public class VirtualPetShelter {
 
 	public void inputFeedAll() {
 		for (VirtualPet elems : shelter) {
-			elems.inputFeed();
+			if (elems instanceof OrganicPet) {
+				((OrganicPet) elems).inputFeed();
+			}
+		}
+	}
+
+	public void inputOilAll() {
+		for (VirtualPet elems : shelter) {
+			if (elems instanceof RoboPet) {
+				((RoboPet) elems).inputOil();
+			}
 		}
 	}
 
@@ -55,7 +59,7 @@ public class VirtualPetShelter {
 	}
 
 	public void inputPlayWithOne(VirtualPet petToPlay) {
-		
+
 		for (VirtualPet elems : shelter) {
 			if (petToPlay == elems) {
 				elems.inputPlay();
@@ -71,5 +75,17 @@ public class VirtualPetShelter {
 
 	public Collection<VirtualPet> getShelterPetVariables() {
 		return shelter;
+	}
+
+	public void inputWalkAll() {
+		for (VirtualPet elems : shelter) {
+			if (elems instanceof RoboDog || elems instanceof OrganicDog) {
+				if(elems instanceof RoboDog) {
+					((RoboDog) elems).inputWalk();
+				} else {
+					((OrganicDog) elems).inputWalk();
+				}
+			}
+		}		
 	}
 }

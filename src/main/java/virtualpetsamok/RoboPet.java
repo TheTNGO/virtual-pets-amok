@@ -18,6 +18,10 @@ public class RoboPet extends VirtualPet {
 		this.statOil = amount;
 
 	}
+	
+	public void inputOil() {
+		this.statOil += 5;
+	}
 
 	@Override
 	public void tick() {
