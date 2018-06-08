@@ -19,8 +19,8 @@ public class OrganicPetTest {
 	@Test
 	public void shouldHaveHealth() {
 		// act
-		testOrganic.setHealth(10);
-		int health = testOrganic.getHealth();
+		testOrganic.setStatHealth(10);
+		int health = testOrganic.getStatHealth();
 
 		// assert
 		assertEquals(10, health);
@@ -53,6 +53,14 @@ public class OrganicPetTest {
 		
 		assertEquals(10, hunger);
 		
+	}
+	
+	@Test
+	public void tickShouldRemove1Happiness() {
+		testOrganic.setStatHappiness(5);
+		testOrganic.tick();
+		int happiness = testOrganic.getStatHappiness();
+		assertEquals(4, happiness);
 	}
 	
 
